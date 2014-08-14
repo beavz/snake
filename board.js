@@ -2,7 +2,7 @@
   var Game = window.Game = window.Game || {};
 
   var Board = Game.Board = function () {
-    this.snake = new Game.Snake;
+    this.snake = new Game.Snake();
   };
 
   Board.prototype.render = function () {
