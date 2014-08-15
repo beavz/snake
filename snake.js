@@ -23,9 +23,9 @@
     }
   };
 
-  Snake.prototype.hitsSelf = function {
+  Snake.prototype.hitsSelf = function () {
     var head = this.segments[0];
-    for (var i = 1; var i < this.segments.length; i++) {
+    for (var i = 1; i < this.segments.length; i++) {
       var seg = this.segments[i];
       if (seg.x === head.x && seg.y === head.y) {
         return true;

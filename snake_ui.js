@@ -2,7 +2,7 @@
   var Game = window.Game = window.Game || {};
 
   var View = Game.View = function (el) {
-    this.$el =  ;
+    this.$el = $(el);
     this.board = new Game.Board;
     this.paused = false;
   };
@@ -26,13 +26,21 @@
       }
     }.bind(this))
 
-    setInterval(this.step.bind(this), 1000);
+    setInterval(this.step.bind(this), 300);
   };
+
+  View.prototype.isLost = function () {
+    return (this.board.snakeHitsWall() || this.board.snake.hitsSelf());
+  }
 
   View.prototype.step = function () {
     if (!this.paused) {
       this.board.snake.move();
-      this.$el.html(this.board.render.bind(this.board)());
+      if (!this.isLost()) {
+        this.$el.html(this.board.render.bind(this.board)());
+      } else {
+        this.paused = true;
+      }
     }
   };
 })()

@@ -3,7 +3,7 @@
 
   var Board = Game.Board = function () {
     this.snake = new Game.Snake();
-    this.apples = [];
+    this.apple = new Game.Coord(4,10);
   };
 
   Board.size = 50;
@@ -28,6 +28,26 @@
     return grid;
   };
 
+  Board.prototype.placeApple = function () {
+    var disallowed = true;
+    var segs = this.snake.segments;
+
+    while (disallowed) {
+      var apple = new Game.Coord(
+        Math.floor(Math.random * Board.size),
+        Math.floor(Math.random * Board.size)
+      )
+      disallowed = false;
+      for (var i = 0; i < segs.length; i++) {
+        if (segs[i].x === apple.x && segs[i].y === apple.y){
+          disallowed = true;
+        }
+      };
+    };
+
+    this.apples.push(apple);
+  };
+
   Board.prototype.render = function () {
     var grid = this.buildClassGrid();
     var gridHtml = "<ul class='group'>";
@@ -41,5 +61,15 @@
     gridHtml += "</ul>"
     return gridHtml;
   };
+
+  Board.prototype.snakeHitsWall = function () {
+    var head = this.snake.segments[0];
+    return (head.x >= Board.size || head.x < 0 ||
+      head.y >= Board.size || head.y < 0)
+  }
+
+  Board.prototype.snakeEatsApple = function () {
+
+  }
 
 })();
