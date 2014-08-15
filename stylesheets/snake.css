@@ -1,0 +1,43 @@
+h1, p, body, ul, li {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  list-style: none;
+}
+
+h1 {
+  font-family: Verdana;
+  text-align: center;
+  font-size: 60px;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.group:after {
+  content: "";
+  display: block;
+}
+
+ul {
+  //border: 5px solid black;
+  margin: auto;
+  margin-top: 50px;
+  width: 500px;
+  height: 500px;
+  background: #6699FF;
+}
+
+li {
+  float: left;
+  width: 10px;
+  height: 10px;
+}
+
+li.apple {
+  background: red;
+}
+
+li.snake {
+  background: green;
+}

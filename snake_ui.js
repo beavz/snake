@@ -2,8 +2,9 @@
   var Game = window.Game = window.Game || {};
 
   var View = Game.View = function (el) {
-    this.$el = $(el);
+    this.$el =  ;
     this.board = new Game.Board;
+    this.paused = false;
   };
 
   View.KEYCODES = {
@@ -13,21 +14,25 @@
     39: "E"
   }
 
+
   View.prototype.start = function() {
 
-    $(
-      this.$el.on("keydown", function(event){
+    this.$el.on("keydown", function(event){
+      if(event.which === 32){
+        this.paused = !this.paused;
+      } else if (!this.paused){
         var dir = View.KEYCODES[event.which];
-
-        view.game.board.snake.turn(dir);
-      })
-    )
+        this.board.snake.turn(dir);
+      }
+    }.bind(this))
 
     setInterval(this.step.bind(this), 1000);
-  }
+  };
 
   View.prototype.step = function () {
-    this.board.snake.move();
-    this.board.render();
-  }
+    if (!this.paused) {
+      this.board.snake.move();
+      this.$el.html(this.board.render.bind(this.board)());
+    }
+  };
 })()

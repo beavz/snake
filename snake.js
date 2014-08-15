@@ -23,10 +23,21 @@
     }
   };
 
+  Snake.prototype.hitsSelf = function {
+    var head = this.segments[0];
+    for (var i = 1; var i < this.segments.length; i++) {
+      var seg = this.segments[i];
+      if (seg.x === head.x && seg.y === head.y) {
+        return true;
+      }
+    };
+    return false;
+  };
+
   var Coord = Game.Coord = function(x, y) {
     this.x = x;
     this.y = y;
-  }
+  };
 
   Coord.prototype.plus = function(dir) {
     switch(dir) {
@@ -43,7 +54,9 @@
       return new Coord(this.x - 1, this.y);
       break;
     }
-  }
+  };
+
+
 
 
 })();
