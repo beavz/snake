@@ -3,7 +3,7 @@
 
   var Snake = Game.Snake = function (x) {
     this.dir = "N";
-    this.segments = [new Coord(x, 25), new Coord(x, 24), new Coord(x, 23)];
+    this.segments = [new Coord(x, 22), new Coord(x, 23), new Coord(x, 24)];
   };
 
   Snake.DIRS = ["N", "E", "S", "W"];

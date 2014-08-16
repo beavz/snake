@@ -4,6 +4,8 @@
   var Board = Game.Board = function () {
     this.snakes = [new Game.Snake(15), new Game.Snake(35)];
     this.placeApple();
+    this.points= [0,0];
+    this.message = "";
   };
 
   Board.size = 50;
@@ -20,11 +22,11 @@
     for (var i = 0; i < 2; i++) {
       var snake = this.snakes[i].segments;
       for (var j = 0; j < snake.length; j++) {
-        grid[snake[j].y][snake[j].x] = "class='snake" + i + "'";
+        grid[snake[j].y][snake[j].x] = "snake" + i;
       };
     };
 
-    grid[this.apple.y][this.apple.x] = "class='apple'";
+    grid[this.apple.y][this.apple.x] = "apple";
 
     return grid;
   };
@@ -35,7 +37,7 @@
 
     for (var y = 0; y < Board.size; y++) {
       for (var x = 0; x < Board.size; x++) {
-        gridHtml += ("<li " + grid[y][x] + "></li>" );
+        gridHtml += ("<li class ='" + grid[y][x] + " grid'></li>" );
       };
     };
 
@@ -65,7 +67,11 @@
 
   Board.prototype.snakeEatsApple = function (snakeNum) {
     var head = this.snakes[snakeNum].segments[0];
-    return (head.x === this.apple.x && head.y === this.apple.y)
+    var bool = (head.x === this.apple.x && head.y === this.apple.y);
+    if (bool) {
+      this.points[snakeNum] += 1;
+    }
+    return bool;
   }
 
   Board.prototype.snakeHitsWall = function (snakeNum) {
@@ -77,7 +83,7 @@
   Board.prototype.snakeHitsSnake = function (snakeNum) {
     var head = this.snakes[snakeNum].segments[0];
     var otherNum = (snakeNum === 0 ? 1 : 0);
-    var segs = this.snakes[snakeNum].segments.slice(1).concat(
+    var segs = this.snakes[snakeNum].segments.slice(1, this).concat(
       this.snakes[otherNum].segments);
 
     for (var i = 0; i < segs.length; i++) {

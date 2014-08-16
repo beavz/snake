@@ -2,12 +2,14 @@ h1, p, body, ul, li {
   margin: 0;
   border: 0;
   padding: 0;
-  font: inherit;
+  font: sans-serif;
   list-style: none;
+  //border: 1px solid red;
+  font-family: Verdana;
+
 }
 
 h1 {
-  font-family: Verdana;
   text-align: center;
   font-size: 60px;
   padding: 20px;
@@ -25,12 +27,16 @@ ul {
   width: 500px;
   height: 500px;
   background: #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
 }
 
-li {
+li.grid {
   float: left;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
 }
 
 li.apple {
@@ -38,9 +44,36 @@ li.apple {
 }
 
 li.snake0 {
-  background: black;
+  background: #66FF66;
 }
 
 li.snake1 {
-  background: purple;
+  background: #00CCCC;
+}
+
+.score-board {
+  height: 20px;
+  width: 470px;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+li.score0 {
+  float: left;
+  width: 100px;
+}
+
+li.score1 {
+  float: left;
+  text-align: right;
+  height: 50px;
+  width: 100px;
+}
+
+li.game-message{
+  float: left;
+  text-align: center;
+  height: 50px;
+  height: 50px;
+  width: 270px;
 }
