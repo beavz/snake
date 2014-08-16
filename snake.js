@@ -1,16 +1,18 @@
 (function () {
   var Game = window.Game = window.Game || {};
 
-  var Snake = Game.Snake = function () {
+  var Snake = Game.Snake = function (x) {
     this.dir = "N";
-    this.segments = [new Coord(1, 5), new Coord(1, 6), new Coord(1, 7)];
+    this.segments = [new Coord(x, 25), new Coord(x, 24), new Coord(x, 23)];
   };
 
   Snake.DIRS = ["N", "E", "S", "W"];
 
-  Snake.prototype.move = function() {
-    this.segments.pop();
+  Snake.prototype.move = function(eatsApple) {
     this.segments.unshift(this.segments[0].plus(this.dir));
+    if (!eatsApple) {
+      this.segments.pop();
+    }
   }
 
   Snake.prototype.turn = function(newDir) {
@@ -21,17 +23,6 @@
                (newDir === "S"   || newDir === "N" )) {
       this.dir = newDir;
     }
-  };
-
-  Snake.prototype.hitsSelf = function () {
-    var head = this.segments[0];
-    for (var i = 1; i < this.segments.length; i++) {
-      var seg = this.segments[i];
-      if (seg.x === head.x && seg.y === head.y) {
-        return true;
-      }
-    };
-    return false;
   };
 
   var Coord = Game.Coord = function(x, y) {
@@ -55,8 +46,6 @@
       break;
     }
   };
-
-
 
 
 })();

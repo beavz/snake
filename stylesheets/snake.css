@@ -20,12 +20,11 @@ h1 {
 }
 
 ul {
-  //border: 5px solid black;
   margin: auto;
   margin-top: 50px;
   width: 500px;
   height: 500px;
-  background: #6699FF;
+  background: #CCCCCC;
 }
 
 li {
@@ -35,9 +34,13 @@ li {
 }
 
 li.apple {
-  background: red;
+  background: black;
 }
 
-li.snake {
-  background: green;
+li.snake0 {
+  background: black;
+}
+
+li.snake1 {
+  background: purple;
 }
