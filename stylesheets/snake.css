@@ -22,6 +22,7 @@ h1 {
 }
 
 ul {
+  position: relative;
   margin: auto;
   margin-top: 50px;
   width: 500px;
@@ -31,24 +32,28 @@ ul {
   border-left: 1px solid #CCCCCC;
 }
 
-li.grid {
-  float: left;
+li.apple {
+  background: black;
   width: 9px;
   height: 9px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #CCCCCC;
 }
 
-li.apple {
-  background: black;
-}
-
 li.snake0 {
   background: #66FF66;
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
 }
 
 li.snake1 {
   background: #00CCCC;
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
 }
 
 .score-board {

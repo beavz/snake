@@ -33,8 +33,8 @@
   };
 
   View.prototype.speedUp = function () {
+    this.interval *= 0.95;
     window.clearInterval(this.intervalID);
-    console.log(this.interval);
     this.intervalID = window.setInterval(this.step.bind(this), this.interval);
   }
 
@@ -48,11 +48,10 @@
     var eating1 = board.snakeEatsApple(1);
 
     if (!this.paused) {
-      board.snakes[0].move(eating0);
+      //board.snakes[0].move(eating0);
       board.snakes[1].move(eating1);
       if (eating0 || eating1) {
         this.board.placeApple();
-        this.interval *= 0.5;
         this.speedUp()
       }
       if (!this.isLost()) {
