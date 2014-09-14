@@ -1,0 +1,84 @@
+h1, p, body, ul, li {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: sans-serif;
+  list-style: none;
+  //border: 1px solid red;
+  font-family: Verdana;
+
+}
+
+h1 {
+  text-align: center;
+  font-size: 60px;
+  padding: 20px;
+  font-weight: bold;
+}
+
+.group:after {
+  content: "";
+  display: block;
+}
+
+ul {
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  width: 500px;
+  height: 500px;
+  background: #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+}
+
+li.apple {
+  background: black;
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+}
+
+li.snake0 {
+  background: #66FF66;
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+}
+
+li.snake1 {
+  background: #00CCCC;
+  width: 9px;
+  height: 9px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+}
+
+.score-board {
+  height: 20px;
+  width: 470px;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+li.score0 {
+  float: left;
+  width: 100px;
+}
+
+li.score1 {
+  float: left;
+  text-align: right;
+  height: 50px;
+  width: 100px;
+}
+
+li.game-message{
+  float: left;
+  text-align: center;
+  height: 50px;
+  height: 50px;
+  width: 270px;
+}
