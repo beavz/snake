@@ -10,51 +10,17 @@
 
   Board.size = 50;
 
-  // Board.prototype.buildClassGrid = function () {
-  //   var grid = [];
-  //   for (var i = 0; i < Board.size; i++) {
-  //     grid.push([]);
-  //     for (var j = 0; j < Board.size; j++) {
-  //       grid[i].push('');
-  //     };
-  //   };
-  //
-  //   for (var i = 0; i < 2; i++) {
-  //     var snake = this.snakes[i].segments;
-  //     for (var j = 0; j < snake.length; j++) {
-  //       grid[snake[j].y][snake[j].x] = "snake" + i;
-  //     };
-  //   };
-  //
-  //   grid[this.apple.y][this.apple.x] = "apple";
-  //
-  //   return grid;
-  // };
-  //
-  // Board.prototype.render = function () {
-  //   var grid = this.buildClassGrid();
-  //   var gridHtml = "";
-  //
-  //   for (var y = 0; y < Board.size; y++) {
-  //     for (var x = 0; x < Board.size; x++) {
-  //       gridHtml += ("<li class ='" + grid[y][x] + " grid'></li>" );
-  //     };
-  //   };
-  //
-  //   return gridHtml;
-  // };
-
   Board.prototype.render = function () {
       var html = "";
 
       for (var i = 0; i < 2; i++) {
         var snake = this.snakes[i].segments;
         for (var j = 0; j < snake.length; j++) {
-          html += "<li class='snake"+i+"' style='position: absolute; left: "+(snake[j].x * 10)+"px; top: "+(snake[j].y *10)+"px;'></li>";
+          html += "<li class='snake"+i+"' style='left: "+(snake[j].x * 10)+"px; top: "+(snake[j].y *10)+"px;'></li>";
         };
       };
 
-      html += "<li class='apple' style='position: absolute; left: "+(this.apple.x * 10)+"px; top: "+(this.apple.y * 10)+"px;'></li>";
+      html += "<li class='apple' style='left: "+(this.apple.x * 10)+"px; top: "+(this.apple.y * 10)+"px;'></li>";
 
       return html;
     };
@@ -82,11 +48,11 @@
 
   Board.prototype.snakeEatsApple = function (snakeNum) {
     var head = this.snakes[snakeNum].segments[0];
-    var bool = (head.x === this.apple.x && head.y === this.apple.y);
-    if (bool) {
+    var eating = (head.x === this.apple.x && head.y === this.apple.y);
+    if (eating) {
       this.points[snakeNum] += 1;
     }
-    return bool;
+    return eating;
   }
 
   Board.prototype.snakeHitsWall = function (snakeNum) {
@@ -98,7 +64,7 @@
   Board.prototype.snakeHitsSnake = function (snakeNum) {
     var head = this.snakes[snakeNum].segments[0];
     var otherNum = (snakeNum === 0 ? 1 : 0);
-    var segs = this.snakes[snakeNum].segments.slice(1, this).concat(
+    var segs = this.snakes[snakeNum].segments.slice(1).concat(
       this.snakes[otherNum].segments);
 
     for (var i = 0; i < segs.length; i++) {

@@ -4,24 +4,36 @@
     <meta charset="utf-8">
     <title>Snakitron</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/snake.css">
-  </head>
-
-  <body>
-
-    <ul class="group board"></ul>
-    <ul class="group score-board">
-      <li class="score0">GREEN: 0</li>
-      <li class="game-message">Press SPACE to begin.</li>
-      <li class="score1">BLUE: 0</li>
-    </div>
-
+    
     <script src="jquery-2.1.1.js"></script>
     <script src="snake.js"></script>
     <script src="board.js"></script>
     <script src="snake_ui.js"></script>
+  </head>
+
+  <body>
+    <main class="boardWrap group">
+      <ul class="group board">
+      </ul>
+
+      <div class="info show">
+        <h2>SNAKE</h2>
+        <p>Get points by eating the food, but don't run into your friend, the wall, or yourself!</p>
+        <p>SPACE will start the game, then pause or unpause both snakes.</p>
+        <p>ENTER will pause or unpause only the green snake, allowing you to play alone should you so choose.</p>
+        <p>UP DOWN RIGHT LEFT will control the blue snake.</p>
+        <p>W S D A will control the green snake.</p>
+      </div>
+
+      <ul class="group scoreboard">
+        <li class="score0">GREEN: 0</li>
+        <li class="game-message">Press SPACE to begin.</li>
+        <li class="score1">BLUE: 0</li>
+      </ul>
+    </main>
 
     <script>
-      view = new Game.View($("body"));
+      view = new Game.View($("body"), $(".board"), $(".scoreboard"), $(".info"));
       view.start();
     </script>
 

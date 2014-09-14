@@ -1,12 +1,14 @@
 (function () {
   var Game = window.Game = window.Game || {};
 
-  var View = Game.View = function (el) {
-    this.$el = $(el);
-    this.$board = $(this.$el.children(".board").first())
-    this.$scoreBoard = $(this.$el.children(".score-board"))
+  var View = Game.View = function (el, board, scoreboard, info) {
+    this.$el = $(el)
+    this.$board = $(board)
+    this.$scoreBoard = $(scoreboard)
+    this.$info = $(info)
     this.board = new Game.Board;
     this.paused = true;
+    this.onePlayer = false;
     this.interval = 300.0;
   };
 
@@ -23,6 +25,10 @@
     this.$el.on("keydown", function(event){
       if(event.which === 32){
         this.paused = !this.paused;
+        this.$info.toggleClass("show")
+      } 
+      else if (event.which == 13){
+        this.onePlayer = !this.onePlayer;
       } else if (!this.paused){
         var keyData = View.KEYCODES[event.which];
         this.board.snakes[keyData[0]].turn(keyData[1]);
@@ -48,14 +54,16 @@
     var eating1 = board.snakeEatsApple(1);
 
     if (!this.paused) {
-      //board.snakes[0].move(eating0);
+      if (!this.onePlayer) {
+        board.snakes[0].move(eating0);
+      }
       board.snakes[1].move(eating1);
       if (eating0 || eating1) {
         this.board.placeApple();
         this.speedUp()
       }
       if (!this.isLost()) {
-        this.$board.html(board.render.bind(board)());
+        this.$board.html(this.board.render());
         this.$scoreBoard.children(".game-message").html(this.board.message);
         this.$scoreBoard.children(".score0").html("GREEN: " + this.board.points[0]);
         this.$scoreBoard.children(".score1").html("BLUE: " + this.board.points[1]);

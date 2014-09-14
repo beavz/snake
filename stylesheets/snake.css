@@ -1,19 +1,11 @@
-h1, p, body, ul, li {
+p, body, ul, li, div {
   margin: 0;
   border: 0;
   padding: 0;
   font: sans-serif;
   list-style: none;
-  //border: 1px solid red;
   font-family: Verdana;
 
-}
-
-h1 {
-  text-align: center;
-  font-size: 60px;
-  padding: 20px;
-  font-weight: bold;
 }
 
 .group:after {
@@ -21,18 +13,56 @@ h1 {
   display: block;
 }
 
-ul {
+main.boardWrap {
   position: relative;
+  width: 500px;
   margin: auto;
-  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+ul.board {
+  position: absolute;
   width: 500px;
   height: 500px;
   background: #CCCCCC;
   border-bottom: 1px solid #CCCCCC;
   border-left: 1px solid #CCCCCC;
+  top: 20px;
+}
+
+div.info {
+  display: none;
+}
+
+div.show {
+  display: block;
+  position: absolute;
+  width: 461px;
+  height: 461px;
+  padding: 20px;
+  background: #fff;
+  opacity: .7; 
+  top: 20px;
+}
+
+div.info p, div.info h2 {
+  color: #000;
+  display: block;
+  background: transparent;
+}
+
+div.info h2 {
+  display: block;
+  margin: 15px 0;
+  text-align: center;
+}
+
+div.info p {
+  margin-bottom: 10px;
 }
 
 li.apple {
+  position: absolute;
   background: black;
   width: 9px;
   height: 9px;
@@ -41,6 +71,7 @@ li.apple {
 }
 
 li.snake0 {
+  position: absolute;
   background: #66FF66;
   width: 9px;
   height: 9px;
@@ -49,6 +80,7 @@ li.snake0 {
 }
 
 li.snake1 {
+  position: absolute;
   background: #00CCCC;
   width: 9px;
   height: 9px;
@@ -56,29 +88,34 @@ li.snake1 {
   border-right: 1px solid #CCCCCC;
 }
 
-.score-board {
+ul.scoreboard {
+  position: absolute;
+  width: 480px;
   height: 20px;
-  width: 470px;
-  margin-top: 20px;
-  padding: 15px;
+  background: #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+  top: 530px;
+  padding: 10px;
+  left: 0;
 }
 
 li.score0 {
   float: left;
+  height: 20px;
   width: 100px;
 }
 
 li.score1 {
   float: left;
   text-align: right;
-  height: 50px;
+  height: 20px;
   width: 100px;
 }
 
 li.game-message{
   float: left;
   text-align: center;
-  height: 50px;
-  height: 50px;
+  height: 20px;
   width: 270px;
 }
